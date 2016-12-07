@@ -1,0 +1,8 @@
+Magnetic Interface:
+https://www.comsol.com/model/external-material-ac-dc-module-general-hb-bh-relation-32321
+
+Structural Mechanics Interface:
+https://www.comsol.com/model/external-material-examples-structural-mechanics-32331
+
+Comsol Blog:
+https://www.comsol.com/blogs/accessing-external-material-models-for-structural-mechanics/
