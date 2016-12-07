@@ -1,0 +1,50 @@
+Steps to create dynamic link libraries (.dll) using Visual Studio 2013
+
+1) Download and install VS2013 
+	-	we have free access to this through UCLA 
+	-	log onto https://my.engineering.ucla.edu/
+	-	select "Software Download" under the "My Tools" section on the left
+2) Open VS2013
+3) File -> New -> Project
+4) Select Win32 Console Application from the Visual C++ list
+5) Name the Project and Solution (ex: comsol_material)
+	- select desired build location (or leave as default)
+	- Leave "Solution:" as "Create new solution"
+	- Ensure "Create directory for solution" is checked
+	- Ensure "Add to source control" is not checked
+6) Click "OK"
+7) Application Wizard:
+	- Overview: click next
+	- Appliation Settings:
+		-Application Type: DLL 
+		- Additional Options (check): empty project, SDL
+	- Click Finish
+8) Create source file for project
+	- In the Solution Explorer (usually on the left side), right click folder labeled "Source Files", add-> new item
+	- Select a C++ (.cpp) file (leave name as Source.cpp)
+	- Insert magical C++ code!
+		- (for these instructions, view the source.cpp file included in the comsol_material folder)
+	- The precompiler portion of these codes is crucial (region above EXPORT int eval()) 
+		- the #ifdef section creates macros that specify commands to export functions from the library
+		- the ifdef region should look like:
+			#ifdef _MSC_VER									//Check if code is being compiled with visual studio 
+			#define EXPORT extern "C" __declspec(dllexport)	//Define command to export symbols to a .dll
+			#else
+			#define EXPORT
+			#endif		
+		- extern "C" is used in the macro to prevent name mangling of the functions when the dll is compiled
+		- Comsol looks specifically for a function called "eval" when it calls the external material library
+9) When finished typing the code, select/highlight the "Solution 'comsol_material'" at the top of the Solution Explorer (left hand pane)
+	- Open the Properties pane (hit F4)
+	- Click the wrench icon to open the Property Pages
+	- Highlight: Configuration Properties
+	- Select "Configuration Manager"
+	- Change "Platform" to "<New...>"
+	- New Platform: x64, click OK
+	- Close Configuration Manager
+	- Hit OK to close Property Pages
+10) Build .dll
+	- Menu: Build -> Build Solution (ctrl+shift+B)
+	- As long as you didn't mess things up, it compiles!
+11) Use comsol_material.dll in Comsol's External Materials interface
+	

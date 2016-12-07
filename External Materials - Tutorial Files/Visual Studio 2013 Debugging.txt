@@ -1,0 +1,31 @@
+Steps to debugging the operation of a .dll library using Visual Studio 2013
+This will enable Visual Studio to open an instance of Comsol, and then halt its operation while running, allowing you to debug the code yous write
+
+This writeup follows the instructions found at:
+https://msdn.microsoft.com/en-us/library/605a12zt.aspx
+
+1) Specify the calling application in a c++ dll project
+	a - Right-click the project node in the Solution Explorer and select "Properties"
+	  - The project nodes start on the second line of the Solution Explorer tab. Your project is likely just underneath the section labeled "Solution 'Project Name' (# project)"
+	  - This opens the "Property Pages" window
+	  - Go to the debug tab
+	b - Make sure that the "Configuration" at the top of the window is set to Debug, or Active(Debug)
+	c - Go to "Configuration Properties / Debugging"
+	d - In the "Debugger to launch" list, choose "Local Windows Debugger" or "Remote Windows Debugger"
+	e - In the "Command" or "Remote Command" box, add the fully-qualified path name of the application	
+	  - ex: C:\Program Files\COMSOL\COMSOL52\Multiphysics\bin\win64\comsol.exe
+	f - Add any neccesary program aguments to the "Command Arguments" box
+	  - These are the arguments you would include if starting the program from the command line
+  
+  2) Start debugging from the DLL project
+	a - Set breakpoints in the .cpp program used to create your .dll file
+	b - Start debugging (pres F5, click the green arrow, or click "Debug/Start Debugging" )
+	
+  3) Run Comsol
+	a - Once you start debugging, a Comsol instance should open
+	b - from within Comsol, open the model that uses your .dll and run as normal.
+	c - when the .dll is called from comsol, the program will halt operation when a breakpoint is encountered.
+	d - if you remove all breakpoints, comsol will run as usual
+	f - if you notice odd behavior while running, but forgot to set a breakpoint ahead of time, don't worry. Visual Studio lets you inset a breakpoint while Comsol is currently running, letting you stop Comsol whenever you desire to investigate the variables being passed to your dll
+	
+   4) Enjoy

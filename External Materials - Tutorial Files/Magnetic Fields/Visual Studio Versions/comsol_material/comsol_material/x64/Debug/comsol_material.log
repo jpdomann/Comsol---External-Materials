@@ -1,0 +1,4 @@
+﻿  Source.cpp
+  LINK : A:\jpdomann\Documents\Sync Folder\Research\Comsol\External Materials - Tutorial Files\Magnetic Fields\Visual Studio Versions\comsol_material\x64\Debug\comsol_material.dll not found or not built by the last incremental link; performing full link
+     Creating library A:\jpdomann\Documents\Sync Folder\Research\Comsol\External Materials - Tutorial Files\Magnetic Fields\Visual Studio Versions\comsol_material\x64\Debug\comsol_material.lib and object A:\jpdomann\Documents\Sync Folder\Research\Comsol\External Materials - Tutorial Files\Magnetic Fields\Visual Studio Versions\comsol_material\x64\Debug\comsol_material.exp
+  comsol_material.vcxproj -> A:\jpdomann\Documents\Sync Folder\Research\Comsol\External Materials - Tutorial Files\Magnetic Fields\Visual Studio Versions\comsol_material\x64\Debug\comsol_material.dll

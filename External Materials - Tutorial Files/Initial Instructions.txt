@@ -1,0 +1,41 @@
+Setup Comsol Security Settings:
+• Libraries are initially disabled
+	- Open preferences --> Security --> check "Allow external processes"
+
+
+Compiling and linking a C library (.dll file) from c code (.c file)
+From: page 77 of "COMSOL_ProgrammingReferenceManual"
+• 64-bit Windows with Microsoft Visual Studio:
+	- from the Windows Start Menu.
+		- Start Microsoft Visual Studio > Visual Studio Tools > Visual Studio x64 Win64 Command Prompt (2010) 
+	- cd to the directory that contains your c file CODE.c.
+	- "cl /MT /c CODE.c"
+		- options: (access by typing: "cl /?")
+			- /MT link with LIBCMT.LIB
+			- /c compile only, no link
+			- /MTd link with LIBCMT.LIB debug lib
+	- "link /OUT:LIBRARY.dll /DLL CODE.obj"
+		-options: (from link /?)
+			- /OUT 
+			- /DLL 
+where:	
+	- CODE.c is the name of your c code
+	- LIBRARY.dll is whatever you want your .dll library to be named
+	- CODE.obj is object code created by the cl command 		
+	
+Notes: 
+The command prompt tool can be opened through the start menu (all applications -> visual studio -> tools)
+
+To change disks, don't use cd command, just type the drive letter
+(Changing C to A looks like -   C:\> A:\)
+
+Help for the cl and link commands is obtained by typing /?
+e.g. cl /? or link /?
+
+
+For help:
+Compling C++ code from the Visual Studio IDE, see: 
+Visual Studio 2013 Instructions.txt
+
+Debugging comsol using Visual Studio IDE, see: 
+Visual Studio 2013 Debugging.txt
